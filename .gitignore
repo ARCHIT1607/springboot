@@ -32,5 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
+<<<<<<< HEAD
 ### Docker issue###
+=======
+>>>>>>> c5f5cce15e9304c30ea55b7c34c97698701b599f
 application.properties
