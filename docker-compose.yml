@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   app:
-    container_name: springboot
+    container_name: springboottest
     image: architdev/springboot
     build: ./
     ports:
