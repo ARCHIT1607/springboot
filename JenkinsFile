@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    tools {
+    maven 'M3'
+    dockerTool 'DK'
+  }
+  environment {
+registry = "architdev/springboot"
+registryCredential = 'dockerhub'
+dockerImage = ''
+}
+    stages {
+        stage('clone') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/ARCHIT1607/springboot.git'
+            }
+        }
+        stage('maven'){
+            steps{
+                 // Run Maven on a Unix agent.
+                 sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+            }
+        }
+        stage('build') {
+            steps {
+              sh """docker build -t hello_there ."""
+            }
+        }
+         stage('deploy in dev') {
+            steps {
+              sh """docker-compose up"""
+            }
+        }
+      
+    }
+}
